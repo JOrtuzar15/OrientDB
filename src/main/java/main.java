@@ -9,21 +9,16 @@ public class main {
     public static void main(String[] args){
         OrientDB orient = new OrientDB("remote:localhost","root","rootpwd",null);
 
-        if (orient.open("database_as", "root", "rootpwd", null) == null) {
+        if (!orient.exists("database_as")) {
             orient.create("database_as", ODatabaseType.PLOCAL);
         }
         ODatabaseSession db = orient.open("database_as","root","rootpwd");
 
         OClass persona = db.getClass("Persona");
-        if (persona == null){
+        if (persona == null) {
             db.createVertexClass("Persona");
-        }
-
-        if (persona.getProperty("nombre") == null){
+            persona = db.getClass("Persona");
             persona.createProperty("nombre", OType.STRING);
-        }
-
-        if (persona.getProperty("sexo") == null){
             persona.createProperty("sexo", OType.STRING);
         }
 
@@ -31,6 +26,8 @@ public class main {
         registro.setProperty("nombre","Jon");
         registro.setProperty("sexo","Hombre");
         registro.save();
+
+        System.out.println(db.getStatus());
 
         db.close();
         orient.close();
