@@ -1,7 +1,7 @@
-RUN ubuntu
+FROM ubuntu
 
 WORKDIR /app
 COPY . /app
-RUN apt -qq install maven
+RUN apt -qq update && apt -qq -y install maven
 
 CMD ["/app/src/main/java/main.java"]
