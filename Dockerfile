@@ -4,4 +4,4 @@ WORKDIR /app
 COPY . /app
 RUN apt -qq update && apt -qq -y install maven
 
-CMD ["/app/src/main/java/main.java"]
+CMD ["java", "-jar", "/app/out/artifacts/OrientDB_jar/OrientDB.jar"]
