@@ -1,0 +1,15 @@
+version: "3.7"
+
+services:
+  app:
+    image: jortuzar/orientdb:v2
+    depends_on:
+      - "orientdb"
+
+  orientdb:
+    image: orientdb:3.0.0
+    ports:
+      - 2424:2424
+      - 2480:2480
+    environment:
+      ORIENTDB_ROOT_PASSWORD: rootpwd
