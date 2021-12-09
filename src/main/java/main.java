@@ -5,9 +5,16 @@ import com.orientechnologies.orient.core.db.document.ODatabaseDocument;
 import com.orientechnologies.orient.core.metadata.schema.OClass;
 import com.orientechnologies.orient.core.metadata.schema.OType;
 import com.orientechnologies.orient.core.record.OVertex;
+import java.util.concurrent.TimeUnit;
 
 public class main {
     public static void main(String[] args){
+        try {
+            TimeUnit.SECONDS.sleep(10);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         OrientDB orient = new OrientDB("remote:orientdb_orientdb_1:2424","root","rootpwd", OrientDBConfig.defaultConfig());
 
         if (!orient.exists("database_as")) {

@@ -13,3 +13,8 @@ services:
       - 2480:2480
     environment:
       ORIENTDB_ROOT_PASSWORD: rootpwd
+    healthcheck:
+      test: ["CMD","curl","-f","http://localhost:2480"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
