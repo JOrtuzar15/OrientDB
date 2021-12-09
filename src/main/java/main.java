@@ -8,7 +8,7 @@ import com.orientechnologies.orient.core.record.OVertex;
 
 public class main {
     public static void main(String[] args){
-        OrientDB orient = new OrientDB("remote:172.17.0.2:2424","root","rootpwd", OrientDBConfig.defaultConfig());
+        OrientDB orient = new OrientDB("remote:orientdb_orientdb_1:2424","root","rootpwd", OrientDBConfig.defaultConfig());
 
         if (!orient.exists("database_as")) {
             orient.create("database_as", ODatabaseType.PLOCAL);
